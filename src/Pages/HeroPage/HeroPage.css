@@ -1,0 +1,40 @@
+.hero{
+    margin-top: 77px;
+    background: linear-gradient(22deg, #000b38, #6d738d9c), url(/src/assets/study-doodle-background-vector.jpg);
+    background-blend-mode: darken;
+    background-size: cover;
+    background-position: center;
+    padding: 250px 50px;
+    height: 900px;
+    color: #000000;
+}
+.btn0{
+    color: #cfcfcf;
+    background-color: #000b38;
+    width: 150px;
+}
+.btn0:hover{
+    background-color: #001774;
+    color: black;
+    box-shadow: 2px 2px 8px 2px #193af1;
+    transition: all 0.5s ease-out;
+}
+.btn1{
+    width: 160px;
+    background-color: #0a33d8;
+}
+.btn1:hover{
+    color: #cfcfcf;
+    background-color: #000b38;
+}
+.logo-left{
+    font-size: 34px;
+    font-weight: 600;
+}
+
+@media (max-width:768px) {
+    .logo{
+        margin-bottom: 20px;
+        text-align: center;
+    }
+}
