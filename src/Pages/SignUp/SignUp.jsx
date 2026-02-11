@@ -63,8 +63,8 @@ export const SignUp = ()=>{
             setErrorMsg('This email is already exist')
             return
         }
-        // users.push(datas)
-        // localStorage.setItem('users',JSON.stringify(users))
+        users.push(datas)
+        localStorage.setItem('users',JSON.stringify(users))
         setIsSuccess(true)
         setErrorMsg('Registration successfully completed')
 
