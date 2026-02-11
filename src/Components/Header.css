@@ -1,5 +1,7 @@
 nav{
     background: linear-gradient(167.5deg, #000b38, transparent);
+    backdrop-filter: blur(4px);
+    /* -webkit-backdrop-filter: blur(10px); */
 }
 .logo{
     font-size: 25px;

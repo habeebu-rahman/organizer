@@ -71,7 +71,10 @@ export const SignUp = ()=>{
         Swal.fire({
             title: 'Registration completed',
             text: 'Your registration is successfully completed, we are stored the data into the database',
-            icon: 'success'
+            icon: 'success',
+            showConfirmButton:false,
+            timer:1500,
+            timerProgressBar:true
         })
         setTimeout(() => {navigate('/SignIn')},2000);
 

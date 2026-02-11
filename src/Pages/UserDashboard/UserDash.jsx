@@ -18,9 +18,12 @@ export const UserDash = ()=>{
         Swal.fire({
                     title: 'Please logIn',
                     text: "You can't use this page, please login then you can use this page",
-                    icon: 'error'
+                    icon: 'error',
+                    timer:2000,
+                    timerProgressBar:true,
+                    showConfirmButton:false,
                 })
-        setTimeout(() => {navigate('/')});
+        setTimeout(() => {navigate('/SignIn')});
     }else
     return(
         <>

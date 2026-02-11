@@ -2,6 +2,9 @@ import { Link } from "react-router"
 
 
 export const Profile = ()=>{
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+
+    
     return(
         <div className="tab-content user-profile container-fluid col-md-8" id="profile">
         
@@ -11,27 +14,27 @@ export const Profile = ()=>{
                     <div className="row">
                     <div className="col-md-6 mb-3">
                         <p className="field-label">Name</p>
-                        <p className="field-value" id="username"></p>
+                        <p className="field-value" id="username">{user.name}</p>
                     </div>
 
                     <div className="col-md-6 mb-3">
                         <p className="field-label">Email</p>
-                        <p className="field-value"id="useremail"></p>
+                        <p className="field-value"id="useremail">{user.email}</p>
                     </div>
 
                     <div className="col-md-6 mb-3">
                         <p className="field-label">Phone</p>
-                        <p className="field-value" id="userphone"></p>
+                        <p className="field-value" id="userphone">{user.phone}</p>
                     </div>
 
                     <div className="col-md-6 mb-3">
                         <p className="field-label">Age</p>
-                        <p className="field-value" id="userage"></p>
+                        <p className="field-value" id="userage">{user.age}</p>
                     </div>
 
                     <div className="col-12">
                         <p className="field-label">Gender</p>
-                        <p className="field-value" id="usergender"></p>
+                        <p className="field-value" id="usergender">{user.gender}</p>
                     </div>
                     </div>
                 </div>
