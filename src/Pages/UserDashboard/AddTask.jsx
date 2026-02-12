@@ -18,16 +18,20 @@ export const AddTask = ()=>{
         const [errorMsg,setErrorMsg] = useState('')
         const[isSuccess,setIsSuccess] = useState(false)
 
-        const handleChange = (e)=>{
-        if(datas.id === user.email){
-            setDatas({...datas.taskDetails,[e.target.name]:e.target.value})
+        const handleChange = (e) => {
+            if(user.email === datas.id){
+                setDatas({
+                    ...datas,
+                    taskDetails: {
+                    ...datas.taskDetails,
+                    [e.target.name]: e.target.value
+                    }
+                });
+            }else{
+                setDatas({...datas,[e.target.name]:e.target.value})
+            }
             console.log(datas)
-            
-        }else{
-            setDatas({...datas,[e.target.name]:e.target.value})
-            console.log(datas)
-        }
-    }
+            };
 
         const handleSubmit =(e)=>{
         e.preventDefault();
@@ -68,7 +72,7 @@ export const AddTask = ()=>{
 
 
                     <label htmlFor="date">Due Date</label><br />
-                    <input type="date" name="dueDate" id="date" value={datas.taskDetails.dueDate} onSelect={handleChange}/><br /><br />
+                    <input type="date" name="dueDate" id="date" value={datas.taskDetails.dueDate} onChange={handleChange}/><br /><br />
 
 
                     <label htmlFor="time">Reminder Time</label><br />
@@ -76,9 +80,9 @@ export const AddTask = ()=>{
 
 
                     <label htmlFor="priority">Priority</label><br />
-                    <input type="radio" name="priority" value="high" onSelect={handleChange}/>High
-                    <input type="radio" name="priority" value="medium" onSelect={handleChange}/>Medium
-                    <input type="radio" name="priority" value="low" onSelect={handleChange}/>Low <br /><br />
+                    <input type="radio" name="priority" value="high" checked={datas.taskDetails.priority === "high"} onChange={handleChange}/>High
+                    <input type="radio" name="priority" value="medium" checked={datas.taskDetails.priority === "medium"} onChange={handleChange}/>Medium
+                    <input type="radio" name="priority" value="low" checked={datas.taskDetails.priority === "low"} onChange={handleChange}/>Low <br /><br />
 
 
                     <label htmlFor="category">Category</label><br />
