@@ -7,21 +7,25 @@ import { MainHeader } from '../../Components/Header'
 import { MainFooter } from '../../Components/Footer'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 export const UserDash = ()=>{
     const [activeTab, setActiveTab] = useState('profile')
     const logInStatus = localStorage.getItem('isLogedIn')
     const navigate = useNavigate()
+
     const [allTaskCount,setAllTaskCount] = useState('')
 
     const user = JSON.parse(localStorage.getItem('currentUser'));
-    axios.get(`http://localhost:3000/tasks/${user.email}`)
-    .then(response => {
-        const data = response.data.tasks.length;
-        setAllTaskCount(data)
-    });
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await axios.get(`http://localhost:3000/tasks/${user.email}`);
+            setAllTaskCount(res.data.tasks.length);
+        };
+
+        fetchData();
+    }, [user]);
 
     if(!logInStatus){
         Swal.fire({

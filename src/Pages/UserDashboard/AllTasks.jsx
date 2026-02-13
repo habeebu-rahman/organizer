@@ -1,6 +1,22 @@
+import { useEffect, useState } from "react"
+import axios from "axios";
 
 
 export const AllTasks = ()=>{
+
+    const [allTasks,setAllTasks] = useState([])
+
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await axios.get(`http://localhost:3000/tasks/${user.email}`);
+            setAllTasks(res.data.tasks);
+        };
+
+        fetchData();
+    }, [user.email]);
+    console.log(allTasks)
+
     return(
         <div className="tab-content user-profile container-fluid col-md-8 col-sm-10 col-11" id="allTask">
             <div className="all-tasks">
@@ -29,7 +45,16 @@ export const AllTasks = ()=>{
                     </tr>
                     </thead>
                     <tbody id="task-table-body">
-                    
+                    {allTasks.map((tasks)=>{
+                        return(
+                            <tr>
+                                <td>{tasks.taskName}</td>
+                                <td>{tasks.dueDate}</td>
+                                <td>{tasks.priority}</td>
+                                <td></td>
+                            </tr>
+                        )
+                    })}
                     </tbody>
                 </table>
                 <p id="noresult-found" style={{textAlign: 'center',color:'rgb(120, 120, 121)'}} className="text-xl"></p>

@@ -89,23 +89,23 @@ export const SignUp = ()=>{
                 <form action=""  id="form" onSubmit={handleSubmit}>
 
                     <label for="username">Full Name : </label><br/>
-                    <input type="text" name="name" onChange={handleChange}/><br/>
+                    <input type="text" name="name" onChange={handleChange}/><br/><br/>
 
                     <label for="email">Email : </label><br/>
-                    <input type="email" name="email" onChange={handleChange}/><br/>
+                    <input type="email" name="email" onChange={handleChange}/><br/><br/>
 
                     <label for="phone">Phone Number : </label><br/>
-                    <input type="text" name="phone" onChange={handleChange}/><br/>
+                    <input type="text" name="phone" onChange={handleChange}/><br/><br/>
 
                     <label for="gender">Gender : </label><br/>
                     <input type="radio" name="gender" value="Male" onChange={handleChange}/>Male
-                    <input type="radio" name="gender" value="Female" onChange={handleChange}/>Female <br/>
+                    <input type="radio" name="gender" value="Female" onChange={handleChange}/>Female <br/><br/>
 
                     <label for="age">Age : </label><br/>
-                    <input type="number" name="age" onChange={handleChange}/><br/>
+                    <input type="number" name="age" onChange={handleChange}/><br/><br/>
 
                     <label for="password">Password : </label><br/>
-                    <input type="password" name="password" onChange={handleChange}/><br/>
+                    <input type="password" name="password" onChange={handleChange}/><br/><br/>
 
                     <label for="confirm_password">Confirm Password : </label><br/>
                     <input type="password" name="confirmPassword" onChange={handleChange}/><br/><br/>
