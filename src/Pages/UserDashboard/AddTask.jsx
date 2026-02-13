@@ -19,7 +19,6 @@ export const AddTask = ()=>{
         const[isSuccess,setIsSuccess] = useState(false)
 
         const handleChange = (e) => {
-            if(user.email === datas.id){
                 setDatas({
                     ...datas,
                     taskDetails: {
@@ -27,9 +26,6 @@ export const AddTask = ()=>{
                     [e.target.name]: e.target.value
                     }
                 });
-            }else{
-                setDatas({...datas,[e.target.name]:e.target.value})
-            }
             console.log(datas)
             };
 
@@ -45,16 +41,18 @@ export const AddTask = ()=>{
                 console.log(response.data)
                 setIsSuccess(true)
                 setErrorMsg('Your task is added')
-                setDatas({taskDetails:
-                    {taskName:'',
-                    taskDescription:'',
-                    dueDate:'',
-                    reminderTime:'',
-                    priority:'',
-                    category:''}})
+                setDatas({
+                    id:user.email,
+                    taskDetails:
+                        {taskName:'',
+                        taskDescription:'',
+                        dueDate:'',
+                        reminderTime:'',
+                        priority:'',
+                        category:''}})
             })
             .catch(() => {
-            alert("something went wrong");
+            console.log("something went wrong");
         });
         }
 
