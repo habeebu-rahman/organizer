@@ -1,8 +1,10 @@
+// import { useSelector } from "react-redux";
 import { Link } from "react-router"
 
 
-export const Profile = ()=>{
+export const Profile = ({allTaskCount})=>{
     const user = JSON.parse(localStorage.getItem('currentUser'));
+    // const allTaskCount = useSelector((state)=>state.taskCount.allTaskCount)
 
     
     return(
@@ -42,7 +44,7 @@ export const Profile = ()=>{
                 <div className="task-details row">
                     <div className="user-details col-md-3 ">
                         <p className="field-label text-xl">All Tasks</p>
-                        <p className="text-xl">45</p>
+                        <p className="text-xl">{allTaskCount}</p>
                     </div>
                     <div className="user-details col-md-3">
                         <p className="field-label text-xl">Completed</p>

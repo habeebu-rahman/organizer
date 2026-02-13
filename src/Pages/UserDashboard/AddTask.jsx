@@ -11,7 +11,7 @@ export const AddTask = ()=>{
                 dueDate:'',
                 reminderTime:'',
                 priority:'',
-                category:''
+                category:'study'
             }
             
         })

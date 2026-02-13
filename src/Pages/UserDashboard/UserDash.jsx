@@ -8,11 +8,20 @@ import { MainFooter } from '../../Components/Footer'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router'
 import { useState } from 'react'
+import axios from 'axios'
 
 export const UserDash = ()=>{
     const [activeTab, setActiveTab] = useState('profile')
     const logInStatus = localStorage.getItem('isLogedIn')
     const navigate = useNavigate()
+    const [allTaskCount,setAllTaskCount] = useState('')
+
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    axios.get(`http://localhost:3000/tasks/${user.email}`)
+    .then(response => {
+        const data = response.data.tasks.length;
+        setAllTaskCount(data)
+    });
 
     if(!logInStatus){
         Swal.fire({
@@ -35,7 +44,7 @@ export const UserDash = ()=>{
             <button className={`item tab ${activeTab ==='allTask'?'active':''}`} onClick={()=>setActiveTab('allTask')}>All Tasks</button>
             <button className={`item tab ${activeTab ==='pendingTask'?'active':''}`} onClick={()=>setActiveTab('pendingTask')}>Pending Tasks</button>
         </div>
-            {activeTab === 'profile' && <Profile />}
+            {activeTab === 'profile' && <Profile allTaskCount={allTaskCount}/>}
             {activeTab === 'addTask' && <AddTask />}
             {activeTab === 'allTask' && <AllTasks />}
             {activeTab === 'pendingTask' && <PendingTaks />}

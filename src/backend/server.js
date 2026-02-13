@@ -39,4 +39,14 @@ app.post("/add-task", (req, res) => {
   res.json({ message: "Task saved correctly", task: taskWithId });
 });
 
+app.get("/tasks/:id", (req, res) => {
+  const data = JSON.parse(fs.readFileSync(FILE));
+  const user = data.find(u => u.id === req.params.id);
+
+  if (!user) return res.json({ tasks: [] });
+
+  res.json({ tasks: user.tasks });
+});
+
+
 app.listen(3000, () => console.log("Server running on port 3000"));
