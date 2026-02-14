@@ -2,7 +2,7 @@
 import { Link } from "react-router"
 
 
-export const Profile = ({allTaskCount})=>{
+export const Profile = ({allTaskCount, allTaskCompletedCount,allTaskTodayCount})=>{
     const user = JSON.parse(localStorage.getItem('currentUser'));
     // const allTaskCount = useSelector((state)=>state.taskCount.allTaskCount)
 
@@ -48,11 +48,11 @@ export const Profile = ({allTaskCount})=>{
                     </div>
                     <div className="user-details col-md-3">
                         <p className="field-label text-xl">Completed</p>
-                        <p className="text-xl">23</p>
+                        <p className="text-xl">{allTaskCompletedCount}</p>
                     </div>
                     <div className="user-details col-md-3">
                         <p className="field-label text-xl">Today Tasks</p>
-                        <p className="text-xl">6</p>
+                        <p className="text-xl">{allTaskTodayCount}</p>
                     </div>
                 </div>
 
