@@ -52,8 +52,8 @@ export const AllTasks = ()=>{
                     <h1 className="field-label text-xl mb-3">All Tasks</h1>
                     <div className="task-table">
                 <table className="table table-radius border table-hr-bordered table-hover table-custom">
-                    <thead className="table-dark">
-                    <tr className="table-head">
+                    <thead className="table-head table-secondary">
+                    <tr>
                         <th>Task Name</th>
                         <th>Due Date</th>
                         <th>Priority</th>
@@ -63,15 +63,20 @@ export const AllTasks = ()=>{
                     <tbody id="task-table-body">
                     {allTasks.map((tasks)=>{
                         return(
-                            <tr key={tasks.taskId}>
-                                <td>{tasks.taskName}</td>
+                            <tr key={tasks.taskId} className="task-detail">
+                                <td>{tasks.taskName}
+                                    <span className="tooltip">
+                                        Description:{tasks.taskDescription}<br />
+                                        Reminder:{tasks.reminderTime}
+                                    </span>
+                                </td>
                                 <td>{tasks.dueDate}</td>
-                                <td ><span className="custom-priority" style={{backgroundColor:tasks.priority==='high'?'red':tasks.priority==='medium'?'yellow':'green'}}>{tasks.priority}</span></td>
+                                <td ><span className="custom-priority" style={{backgroundColor:tasks.priority==='high'?'#ff1414d1':tasks.priority==='medium'?'#ff8a00f2':'#00e800d6'}}>{tasks.priority}</span></td>
                                 <td>
                                     {tasks.status==='pending'?
                                         <><button className="btn completed-btn" onClick={()=>completeTask(tasks.taskId)}>Completed</button>
                                         <button className="btn delete-btn" onClick={()=>deleteTask(tasks.taskId)}>Delete</button></>
-                                        :'completed...'
+                                        :<>completed...<button className="btn delete-btn" style={{marginLeft:'26px'}} onClick={()=>deleteTask(tasks.taskId)}>Delete</button></>
                                     }
                                 </td>
                             </tr>
