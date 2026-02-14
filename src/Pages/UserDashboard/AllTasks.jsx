@@ -66,8 +66,8 @@ export const AllTasks = ()=>{
                             <tr key={tasks.taskId} className="task-detail">
                                 <td>{tasks.taskName}
                                     <span className="tooltip">
-                                        Description:{tasks.taskDescription}<br />
-                                        Reminder:{tasks.reminderTime}
+                                        <span style={{fontWeight:'600'}}>Description: </span>{tasks.taskDescription}<br />
+                                        <span style={{fontWeight:'600'}}>Reminder: </span>{tasks.reminderTime}
                                     </span>
                                 </td>
                                 <td>{tasks.dueDate}</td>

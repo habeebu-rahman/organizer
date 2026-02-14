@@ -263,6 +263,7 @@ input, select{
     white-space: normal;     /* allow multi-line */
     max-height: 100px;
     overflow-y: auto;
+    scrollbar-width: none;
 
     transition: 0.2s ease;
     z-index: 100;
