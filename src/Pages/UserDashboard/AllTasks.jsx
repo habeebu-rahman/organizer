@@ -5,17 +5,32 @@ import axios from "axios";
 export const AllTasks = ()=>{
 
     const [allTasks,setAllTasks] = useState([])
+    const URL_API = 'http://localhost:3000/tasks'
 
     const user = JSON.parse(localStorage.getItem('currentUser'));
+    const fetchTasks = async () => {
+        const res = await axios.get(`${URL_API}/${user.email}`);
+        setAllTasks(res.data.tasks.reverse());
+        };
+
+    const deleteTask = async(delete_id)=>{
+        await axios.delete(`${URL_API}/${user.email}/${delete_id}`)
+        fetchTasks()
+    }
+    const completeTask =async (status_id)=>{
+        await axios.put(`${URL_API}/${user.email}/${status_id}`,{status:'completed'})
+        fetchTasks()
+    }
+    
     useEffect(() => {
         const fetchData = async () => {
-            const res = await axios.get(`http://localhost:3000/tasks/${user.email}`);
-            setAllTasks(res.data.tasks);
+            fetchTasks()
         };
 
         fetchData();
     }, [user.email]);
-    console.log(allTasks)
+    // console.log(allTasks)
+
 
     return(
         <div className="tab-content user-profile container-fluid col-md-8 col-sm-10 col-11" id="allTask">
@@ -35,9 +50,10 @@ export const AllTasks = ()=>{
 
                 <div className="all-task-table mb-4 row">
                     <h1 className="field-label text-xl mb-3">All Tasks</h1>
+                    <div className="task-table">
                 <table className="table table-radius border table-hr-bordered table-hover table-custom">
                     <thead className="table-dark">
-                    <tr>
+                    <tr className="table-head">
                         <th>Task Name</th>
                         <th>Due Date</th>
                         <th>Priority</th>
@@ -47,16 +63,23 @@ export const AllTasks = ()=>{
                     <tbody id="task-table-body">
                     {allTasks.map((tasks)=>{
                         return(
-                            <tr>
+                            <tr key={tasks.taskId}>
                                 <td>{tasks.taskName}</td>
                                 <td>{tasks.dueDate}</td>
-                                <td>{tasks.priority}</td>
-                                <td></td>
+                                <td ><span className="custom-priority" style={{backgroundColor:tasks.priority==='high'?'red':tasks.priority==='medium'?'yellow':'green'}}>{tasks.priority}</span></td>
+                                <td>
+                                    {tasks.status==='pending'?
+                                        <><button className="btn completed-btn" onClick={()=>completeTask(tasks.taskId)}>Completed</button>
+                                        <button className="btn delete-btn" onClick={()=>deleteTask(tasks.taskId)}>Delete</button></>
+                                        :'completed...'
+                                    }
+                                </td>
                             </tr>
                         )
                     })}
                     </tbody>
                 </table>
+                </div>
                 <p id="noresult-found" style={{textAlign: 'center',color:'rgb(120, 120, 121)'}} className="text-xl"></p>
                 </div>
 

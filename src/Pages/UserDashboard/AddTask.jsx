@@ -11,7 +11,8 @@ export const AddTask = ()=>{
                 dueDate:'',
                 reminderTime:'',
                 priority:'',
-                category:'study'
+                category:'study',
+                status:'pending'
             }
             
         })
@@ -49,7 +50,8 @@ export const AddTask = ()=>{
                         dueDate:'',
                         reminderTime:'',
                         priority:'',
-                        category:''}})
+                        category:'study',
+                        status:'pending'}})
             })
             .catch(() => {
             console.log("something went wrong");
