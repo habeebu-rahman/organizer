@@ -98,8 +98,8 @@ export const SignUp = ()=>{
                     <input type="text" name="phone" onChange={handleChange}/><br/><br/>
 
                     <label for="gender">Gender : </label><br/>
-                    <input type="radio" name="gender" value="Male" onChange={handleChange}/>Male
-                    <input type="radio" name="gender" value="Female" onChange={handleChange}/>Female <br/><br/>
+                    <input type="radio" name="gender" value="Male" onChange={handleChange}/><span className='field-label'>Male</span>
+                    <input type="radio" name="gender" value="Female" onChange={handleChange}/><span className='field-label'>Female</span> <br/><br/>
 
                     <label for="age">Age : </label><br/>
                     <input type="number" name="age" onChange={handleChange}/><br/><br/>
@@ -114,7 +114,7 @@ export const SignUp = ()=>{
                     <button type="reset" className="btn btn-form">clear</button>
                     <button type="submit" className="btn btn-form">Sign Up</button>
                     <br/>
-                    <p className="mt-5">Do you have an account already then <Link className="non "  to='/SignIn'><u>Log-In</u></Link>.</p>
+                    <p className="mt-5 field-label">Do you have an account already then <Link className="non "  to='/SignIn'><u>Log-In</u></Link>.</p>
                 </form>
             </div>
 
@@ -122,7 +122,7 @@ export const SignUp = ()=>{
             <div id="container collapsediv" className="collapse navbar-collapse custom-form2">
                 <div>
                     <img src="/src/assets/giphy_gif (800×600).gif" className="focusing" alt="" />
-                    <h1 className="image-title text-2xl text-light mt-5">Are You Ready To Work Like A Professional</h1>
+                    <h1 className="image-title field-label text-2xl text-light mt-5">Are You Ready To Work Like A Professional</h1>
                 </div>
                 
             </div>

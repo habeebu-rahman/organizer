@@ -80,9 +80,9 @@ export const AddTask = ()=>{
 
 
                     <label htmlFor="priority">Priority</label><br />
-                    <input type="radio" name="priority" value="high" checked={datas.taskDetails.priority === "high"} onChange={handleChange}/>High
-                    <input type="radio" name="priority" value="medium" checked={datas.taskDetails.priority === "medium"} onChange={handleChange}/>Medium
-                    <input type="radio" name="priority" value="low" checked={datas.taskDetails.priority === "low"} onChange={handleChange}/>Low <br /><br />
+                    <input  type="radio" name="priority" value="high" checked={datas.taskDetails.priority === "high"} onChange={handleChange}/><span className="label-priority">High</span>
+                    <input  type="radio" name="priority" value="medium" checked={datas.taskDetails.priority === "medium"} onChange={handleChange}/><span className="label-priority">Medium</span>
+                    <input  type="radio" name="priority" value="low" checked={datas.taskDetails.priority === "low"} onChange={handleChange}/><span className="label-priority">Low</span> <br /><br />
 
 
                     <label htmlFor="category">Category</label><br />

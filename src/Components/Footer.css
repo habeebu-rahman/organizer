@@ -1,15 +1,17 @@
+
 footer{
-    background: #000b38;
-    color: white;
+    background: var(--primary);
+    color: var(--text);
     height: 250px;
     padding-top: 30px;
+    font-weight: 600;
 }
 footer .logo{
     padding-left: 50px;
     margin-top: 30px;
 }
 .non:hover{
-    color: #2c4bc5;
+    color: var(--footerTextHover);
     border-bottom: #001774 2px solid;
 }
 .copy-rights{

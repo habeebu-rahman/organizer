@@ -6,14 +6,19 @@ import { SignUp } from './Pages/SignUp/SignUp'
 import { AboutUs } from './Pages/AboutUs/AboutUs'
 import { Feedback } from './Pages/Feedback/Feedback'
 import { UserDash } from './Pages/UserDashboard/UserDash'
-import { store } from './Functions/ReduxStore'
-import { Provider } from 'react-redux'
+import { Provider,useSelector } from 'react-redux'
+import { useEffect } from 'react'
 
 
 function App() {
+    const theme = useSelector(state => state.theme.mode);
+
+    useEffect(() => {
+      document.body.classList.toggle("dark", theme === "dark");
+    }, [theme]);
+
 
   return (
-    <Provider store={store} >
     <Routes>
         <Route index element={<HeroPage/>} />
         <Route path='/SignIn' element={<SignIn/>} />
@@ -22,7 +27,6 @@ function App() {
         <Route path='/Feedback' element={<Feedback/>} />
         <Route path='/UserDash' element={<UserDash/>} />
     </Routes>
-    </Provider>
   )
 }
 

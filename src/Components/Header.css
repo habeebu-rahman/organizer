@@ -1,5 +1,6 @@
+
 nav{
-    background: linear-gradient(167.5deg, #000b38, transparent);
+    background: linear-gradient(167.5deg, var(--primary), transparent);
     backdrop-filter: blur(4px);
     /* -webkit-backdrop-filter: blur(10px); */
 }
@@ -18,7 +19,7 @@ nav{
 } */
 
 .nav-link{
-    color: #ffffff;
+    color: white;
     margin-left: 20px;
 }
 nav .logo{

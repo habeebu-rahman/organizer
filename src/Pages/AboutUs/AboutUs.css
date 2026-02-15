@@ -7,6 +7,7 @@
     padding: 50px 50px 60px 50px;
     border-radius: 15px;
     box-shadow: 2px 2px 15px 2px #173ddbe3 ;
+    color: var(--textOppo);
 }
 .custom-form-image{
     margin:175px 0px -40px 0px;

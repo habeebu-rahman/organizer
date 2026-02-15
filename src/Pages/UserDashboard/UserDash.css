@@ -1,12 +1,12 @@
 
 .tab.active{
     background-color: #434661;
-    color: #000000;
+    color: var(--textOppo);
     /* border-bottom: 0.5px solid #ffffff; */
 }
 .item:hover{
     background-color: #001774;
-    color: black;
+    color: var(--textOppo);
     box-shadow: 2px 2px 8px 2px #041caa;
     transition: all 0.5s ease-out;
 }
@@ -18,8 +18,8 @@
         justify-content: space-around;
         padding-left: 20px;
         margin-bottom: 5px;
-        background-color: #000b38;
-        color: #ffffff;
+        background-color: var(--primary);
+        color: var(--text);
         padding-top: 5.1px;
         height: 47px;
         justify-content: center;
@@ -67,8 +67,8 @@
         gap: 0px;
         align-items: flex-start;
         padding-top: 25px;
-        background-color: #000b38;
-        color: #ffffff;
+        background-color: var(--primary);
+        color: var(--text);
         width: 200px;
         height: 825px;
     }
@@ -91,8 +91,8 @@
         justify-content:space-evenly;
     }
 }
-.field-label{
-    color: #464646c3;
+.field-label,.field-value{
+    color: var(--textOppo);
 }
 .task-details .user-details{
     text-align: center;
@@ -104,8 +104,8 @@
     display: block;
 }
 .msg{margin-top: 20px;}
-.success{color: rgb(15, 68, 36);}
-.error{color: red;}
+.success{color: rgba(0, 216, 86, 0.652);}
+.error{color: rgb(255, 72, 0);}
 
 @media (min-width:200px) and (max-width:768px) {
     .add-task{
@@ -140,8 +140,8 @@ input[type='radio']{
     width: 60px;
 }
 .btn-form{
-    color: #cfcfcf;
-    background-color: #000b38;
+    color: var(--text);
+    background-color: var(--primary);
     width: 100px;
     margin-top: 30px;
 }
@@ -150,13 +150,13 @@ input[type='radio']{
 }
 .btn-form:hover{
     background-color: #001774;
-    color: black;
+    color: var(--textOppo);
     box-shadow: 2px 2px 8px 2px #193af1;
     transition: all 0.5s ease-out;
 }
 
-label{
-    color: #464646c3;
+label,.label-priority{
+    color: var(--textOppo);
 }
 
 .all-task-table{
@@ -174,6 +174,8 @@ label{
 .table-custom{
     justify-content: center;
     align-items: center;
+    border-collapse: collapse;
+
 }
 input, select{
     border: 2px solid #000b38b8;

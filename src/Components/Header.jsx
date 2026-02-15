@@ -1,4 +1,5 @@
 import {NavLink} from 'react-router'
+import { ToogleButton } from './ToogleButton'
 import './Header.css'
 
 export const MainHeader = ()=>{
@@ -10,13 +11,14 @@ export const MainHeader = ()=>{
                     <span className="navbar-toggler-icon navbar-dark"></span>
                 </button>
                 <div className="collapse navbar-collapse custom-navbar-links" id="collapsediv">
-                    <ul className="navbar-nav text-blue-300">
+                    <ul className="navbar-nav ">
                         <li className="nav-item"><NavLink to="/" className="nav-link">Home</NavLink></li>
                         <li className="nav-item"><NavLink to="/AboutUs" className="nav-link">About</NavLink></li>
                         <li className="nav-item"><NavLink to="/UserDash" className="nav-link">Dashboard</NavLink></li>
                         <li className="nav-item"><NavLink to="/SignIn" className="nav-link">Sign-in</NavLink></li>
                     </ul>
                 </div>
+                <ToogleButton />
             </div>
         </nav>
     )

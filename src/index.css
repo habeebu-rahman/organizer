@@ -1,4 +1,28 @@
+:root{
+    --allBackground:rgb(255, 255, 255);
+    --primary:rgb(0 11 56);
+    --secondary:rgb(220, 220, 220);
+    --text:#ffff;
+    --textOppo:black;
+    --footerTextHover:#2c4bc5;
+
+}
+.dark{
+    --allBackground:#12162a;
+    --primary:rgb(11 23 71);
+    --secondary:#000000;
+    --text:rgb(133, 133, 133);
+    --textOppo:white;
+    --footerTextHover:#001a81;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html, body {
     overflow-x: hidden;
     scrollbar-width: none;
+    background-color: var(--allBackground);
 }

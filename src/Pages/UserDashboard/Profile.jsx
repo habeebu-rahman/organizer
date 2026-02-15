@@ -1,6 +1,5 @@
 // import { useSelector } from "react-redux";
 import { Link } from "react-router"
-import { ToogleButton } from "../../Components/ToogleButton";
 
 
 export const Profile = ({allTaskCount, allTaskCompletedCount,allTaskTodayCount})=>{
@@ -45,22 +44,21 @@ export const Profile = ({allTaskCount, allTaskCompletedCount,allTaskTodayCount})
                 <div className="task-details row">
                     <div className="user-details col-md-3 ">
                         <p className="field-label text-xl">All Tasks</p>
-                        <p className="text-xl">{allTaskCount}</p>
+                        <p className="text-xl field-label">{allTaskCount}</p>
                     </div>
                     <div className="user-details col-md-3">
                         <p className="field-label text-xl">Completed</p>
-                        <p className="text-xl">{allTaskCompletedCount}</p>
+                        <p className="text-xl field-label">{allTaskCompletedCount}</p>
                     </div>
                     <div className="user-details col-md-3">
                         <p className="field-label text-xl">Today Tasks</p>
-                        <p className="text-xl">{allTaskTodayCount}</p>
+                        <p className="text-xl field-label">{allTaskTodayCount}</p>
                     </div>
                 </div>
 
                 <div className="user-details feedback row">
-                    <h1 className="col-md-8">Drop Your Feedback It Will Make A Better Communication Between Us</h1>
+                    <h1 className="col-md-8 field-label">Drop Your Feedback It Will Make A Better Communication Between Us</h1>
                     <Link className="col-md-2" to='/Feedback'><button className="btn btn0 mt-1">Feedback</button></Link>
-                    <ToogleButton />
                 </div>
         </div>
     )

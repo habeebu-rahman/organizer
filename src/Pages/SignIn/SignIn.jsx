@@ -57,7 +57,7 @@ export const SignIn = ()=>{
             <div id="container collapsediv" className="collapse navbar-collapse custom-form2">
                 <div>
                     <img src="/src/assets/download (1).gif" className="focusing" alt="" />
-                    <h1 className="image-title text-2xl text-light mt-5">Are You Crazy About The Work Load, Make It Easy</h1>
+                    <h1 className="image-title text-2xl text-light mt-5 field-label">Are You Crazy About The Work Load, Make It Easy</h1>
                 </div>
                 
             </div>
@@ -78,7 +78,7 @@ export const SignIn = ()=>{
                 <button type="reset" className="btn btn-form">clear</button>
                 <button type="submit" className="btn btn-form">Sign In</button>
                 <br />
-                <p className="mt-5">You don't have an account, Creat new account <Link className="non " to='/SignUp'><u>Sign Up</u></Link>.</p>
+                <p className="mt-5 field-label">You don't have an account, Creat new account <Link className="non " to='/SignUp'><u>Sign Up</u></Link>.</p>
             </form>
             </div>
         </section>
