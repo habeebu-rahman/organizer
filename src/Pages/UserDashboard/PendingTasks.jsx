@@ -1,24 +1,24 @@
-import axios from "axios";
-import { useEffect, useState } from "react"
+// import axios from "axios";
+import { useEffect } from "react"
+import { useDispatch,useSelector } from "react-redux";
+import { fetchTasks } from "../../Functions/ApiFetching";
 
 
 export const PendingTaks = ()=>{
-    const [allTasks,setAllTasks] = useState([])
+
     const URL_API = 'http://localhost:3000/tasks'
 
     const user = JSON.parse(localStorage.getItem('currentUser'));
-    const fetchTasks = async () => {
-        const res = await axios.get(`${URL_API}/${user.email}/`);
-        setAllTasks(res.data.tasks.reverse());
-        };
+    const dispatch = useDispatch()
+    const { tasks, loading, error } = useSelector(state => state.tasks);
 
     useEffect(()=>{
         const fetchData = async () => {
-            fetchTasks()
+            dispatch(fetchTasks(user.email))
         };
 
         fetchData();
-    },[])
+    },[dispatch])
 
     return(
         <div className="tab-content user-profile container-fluid col-md-8 col-sm-10 col-11" id="pendingTask">
@@ -36,7 +36,18 @@ export const PendingTaks = ()=>{
                     </tr>
                     </thead>
                     <tbody id="task-table-body">
-                        {allTasks.map((tasks)=>{
+                        {loading && (
+                            <tr>
+                            <td colSpan="4">Loading...</td>
+                            </tr>
+                        )}
+
+                        {error && (
+                            <tr>
+                            <td colSpan="4">{error}</td>
+                            </tr>
+                        )}
+                        {tasks.length > 0 && tasks.map((tasks)=>{
                             return tasks.status==='pending' &&
                         (
                             <tr key={tasks.taskId} className="task-detail">

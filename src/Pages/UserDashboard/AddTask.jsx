@@ -1,7 +1,11 @@
 import { useState } from "react"
 import axios from 'axios'
+import { useDispatch} from "react-redux";
+import { fetchTasks } from "../../Functions/ApiFetching";
+
 
 export const AddTask = ()=>{
+    const dispatch = useDispatch()
     const user = JSON.parse(localStorage.getItem('currentUser'));
     const [datas, setDatas] = useState({
             id:user.email,
@@ -52,6 +56,7 @@ export const AddTask = ()=>{
                         priority:'',
                         category:'study',
                         status:'pending'}})
+                dispatch(fetchTasks(user.email))
             })
             .catch(() => {
             console.log("something went wrong");

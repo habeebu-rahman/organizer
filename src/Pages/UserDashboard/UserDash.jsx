@@ -9,13 +9,15 @@ import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Bell } from "lucide-react";
+import { useDispatch} from "react-redux";
+import { fetchTasks } from "../../Functions/ApiFetching";
 
 
 export const UserDash = ()=>{
     const [activeTab, setActiveTab] = useState('profile')
     const logInStatus = localStorage.getItem('isLogedIn')
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const today = new Date().toISOString().split("T")[0];
     const [allTaskCount,setAllTaskCount] = useState('')
@@ -34,7 +36,8 @@ export const UserDash = ()=>{
         };
 
         fetchData();
-    }, [user]);
+        dispatch(fetchTasks(user.email))
+    }, [user,dispatch]);
 
     if(!logInStatus){
         Swal.fire({

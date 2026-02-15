@@ -1,34 +1,35 @@
-import { useEffect, useState } from "react"
+import { useEffect} from "react"
 import axios from "axios";
+import { useDispatch,useSelector } from "react-redux";
+import { fetchTasks } from "../../Functions/ApiFetching";
 
 
 export const AllTasks = ()=>{
 
-    const [allTasks,setAllTasks] = useState([])
     const URL_API = 'http://localhost:3000/tasks'
 
+    const dispatch = useDispatch()
+    const { tasks, loading, error } = useSelector(state => state.tasks);
+
     const user = JSON.parse(localStorage.getItem('currentUser'));
-    const fetchTasks = async () => {
-        const res = await axios.get(`${URL_API}/${user.email}`);
-        setAllTasks(res.data.tasks.reverse());
-        };
+
 
     const deleteTask = async(delete_id)=>{
         await axios.delete(`${URL_API}/${user.email}/${delete_id}`)
-        fetchTasks()
+        dispatch(fetchTasks(user.email))
     }
     const completeTask =async (status_id)=>{
         await axios.put(`${URL_API}/${user.email}/${status_id}`,{status:'completed'})
-        fetchTasks()
+        dispatch(fetchTasks(user.email))
     }
     
     useEffect(() => {
         const fetchData = async () => {
-            fetchTasks()
+            dispatch(fetchTasks(user.email))
         };
 
         fetchData();
-    }, [user.email]);
+    }, [dispatch,user.email]);
     // console.log(allTasks)
 
 
@@ -61,27 +62,38 @@ export const AllTasks = ()=>{
                     </tr>
                     </thead>
                     <tbody id="task-table-body">
-                    {allTasks.map((tasks)=>{
-                        return(
-                            <tr key={tasks.taskId} className="task-detail">
-                                <td>{tasks.taskName}
-                                    <span className="tooltip">
-                                        <span style={{fontWeight:'600'}}>Description: </span>{tasks.taskDescription}<br />
-                                        <span style={{fontWeight:'600'}}>Reminder: </span>{tasks.reminderTime}
-                                    </span>
-                                </td>
-                                <td>{tasks.dueDate}</td>
-                                <td ><span className="custom-priority" style={{backgroundColor:tasks.priority==='high'?'#ff1414d1':tasks.priority==='medium'?'#ff8a00f2':'#00e800d6'}}>{tasks.priority}</span></td>
-                                <td>
-                                    {tasks.status==='pending'?
-                                        <><button className="btn completed-btn" onClick={()=>completeTask(tasks.taskId)}>Completed</button>
-                                        <button className="btn delete-btn" onClick={()=>deleteTask(tasks.taskId)}>Delete</button></>
-                                        :<>completed...<button className="btn delete-btn" style={{marginLeft:'26px'}} onClick={()=>deleteTask(tasks.taskId)}>Delete</button></>
-                                    }
-                                </td>
+                        {loading && (
+                            <tr>
+                            <td colSpan="4">Loading...</td>
                             </tr>
-                        )
-                    })}
+                        )}
+
+                        {error && (
+                            <tr>
+                            <td colSpan="4">{error}</td>
+                            </tr>
+                        )}
+                        {tasks.length > 0 && tasks.map((task)=>{
+                            return(
+                                <tr key={task.taskId} className="task-detail">
+                                    <td>{task.taskName}
+                                        <span className="tooltip">
+                                            <span style={{fontWeight:'600'}}>Description: </span>{task.taskDescription}<br />
+                                            <span style={{fontWeight:'600'}}>Reminder: </span>{task.reminderTime}
+                                        </span>
+                                    </td>
+                                    <td>{task.dueDate}</td>
+                                    <td ><span className="custom-priority" style={{backgroundColor:task.priority==='high'?'#ff1414d1':task.priority==='medium'?'#ff8a00f2':'#00e800d6'}}>{task.priority}</span></td>
+                                    <td>
+                                        {task.status==='pending'?
+                                            <><button className="btn completed-btn" onClick={()=>completeTask(task.taskId)}>Completed</button>
+                                            <button className="btn delete-btn" onClick={()=>deleteTask(task.taskId)}>Delete</button></>
+                                            :<>completed...<button className="btn delete-btn" style={{marginLeft:'26px'}} onClick={()=>deleteTask(task.taskId)}>Delete</button></>
+                                        }
+                                    </td>
+                                </tr>
+                            )
+                        })}
                     </tbody>
                 </table>
                 </div>
